@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ animation: "none" }}>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -48,9 +48,20 @@ function HomeScreen({ navigation }) {
 
 function DetailsScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Details Screen</Text>
-      <Button title="Home" onPress={() => navigation.navigate("Home")} />
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "blue",
+      }}
+    >
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Details - Details Screen Area</Text>
+        <Button title="press me" onPress={() => console.log("tap")} />
+      </View>
+
+      <NavBar navigation={navigation} />
     </View>
   );
 }
