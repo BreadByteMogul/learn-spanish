@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import * as Haptics from "expo-haptics";
+import Feather from "react-native-vector-icons/Feather";
 
 function NavBar({ navigation }) {
   return (
@@ -9,13 +10,12 @@ function NavBar({ navigation }) {
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "red",
         flexDirection: "row",
       }}
     >
       <TouchableOpacity
         style={{
-          backgroundColor: "yellow",
+          backgroundColor: "#f8f8f8",
           width: "25%",
           height: 80,
           flex: 1,
@@ -28,12 +28,12 @@ function NavBar({ navigation }) {
         }}
       >
         <View style={{ marginBottom: 20 }}>
-          <Text>C</Text>
+          <Feather name="layers" size={22} color="#444" />
         </View>
       </TouchableOpacity>
       <TouchableOpacity
         style={{
-          backgroundColor: "pink",
+          backgroundColor: "#f8f8f8",
           width: "25%",
           height: 80,
           flex: 1,
@@ -47,12 +47,12 @@ function NavBar({ navigation }) {
         }}
       >
         <View style={{ marginBottom: 20 }}>
-          <Text>W</Text>
+          <Feather name="bookmark" size={22} color="#444" />
         </View>
       </TouchableOpacity>
       <TouchableOpacity
         style={{
-          backgroundColor: "orange",
+          backgroundColor: "#f8f8f8",
           width: "25%",
           height: 80,
           flex: 1,
@@ -66,12 +66,12 @@ function NavBar({ navigation }) {
         }}
       >
         <View style={{ marginBottom: 20 }}>
-          <Text>V</Text>
+          <Feather name="book" size={22} color="#444" />
         </View>
       </TouchableOpacity>
       <TouchableOpacity
         style={{
-          backgroundColor: "purple",
+          backgroundColor: "#f8f8f8",
           width: "25%",
           height: 80,
           flex: 1,
@@ -85,7 +85,7 @@ function NavBar({ navigation }) {
         }}
       >
         <View style={{ marginBottom: 20 }}>
-          <Text>S</Text>
+          <Feather name="bar-chart" size={22} color="#444" />
         </View>
       </TouchableOpacity>
     </View>

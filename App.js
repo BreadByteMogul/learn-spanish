@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
-import NavBar from "./NavBar";
+import NavBar from "./components/NavBar";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,12 +48,10 @@ function CardsScreen({ navigation }) {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "blue",
       }}
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Cards - Cards Screen Area</Text>
-        <Button title="press me" onPress={() => console.log("tap tap")} />
       </View>
 
       <NavBar navigation={navigation} />
@@ -68,12 +66,10 @@ function MyWordsScreen({ navigation }) {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "blue",
       }}
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>My Words - My Words Screen Area</Text>
-        <Button title="press me" onPress={() => console.log("tap")} />
       </View>
 
       <NavBar navigation={navigation} />
@@ -88,12 +84,10 @@ function VocabScreen({ navigation }) {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "blue",
       }}
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Vocab - Vocab Screen Area</Text>
-        <Button title="press me" onPress={() => console.log("tap")} />
       </View>
 
       <NavBar navigation={navigation} />
@@ -108,12 +102,10 @@ function StatsScreen({ navigation }) {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "blue",
       }}
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Stats - Stats Screen Area</Text>
-        <Button title="press me" onPress={() => console.log("tap")} />
       </View>
 
       <NavBar navigation={navigation} />
