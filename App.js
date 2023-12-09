@@ -26,6 +26,11 @@ export default function App() {
   );
 }
 
+const handlePress = () => {
+  Haptic.trigger("impactMedium");
+  // Other onPress actions
+};
+
 function HomeScreen({ navigation }) {
   return (
     <View
@@ -38,7 +43,7 @@ function HomeScreen({ navigation }) {
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Home - Main Screen Area</Text>
-        <Button title="press me" onPress={() => console.log("tap")} />
+        <Button title="press me" onPress={() => console.log("tap tap")} />
       </View>
 
       <NavBar navigation={navigation} />

@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import * as Haptics from "expo-haptics";
 
 function NavBar({ navigation }) {
   return (
@@ -22,7 +23,10 @@ function NavBar({ navigation }) {
           alignItems: "center",
           justifyContent: "center",
         }}
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => {
+          navigation.navigate("Home");
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
+        }}
       >
         <View style={{ marginBottom: 20 }}>
           <Text>H</Text>
@@ -39,6 +43,7 @@ function NavBar({ navigation }) {
         }}
         onPress={() => {
           navigation.navigate("Details");
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
           console.log("go details plz");
         }}
       >
