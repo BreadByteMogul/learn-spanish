@@ -27,16 +27,46 @@ export default function App() {
 
 function NavBar({ navigation }) {
   return (
-    <View>
-      <Button title="Details" onPress={() => navigation.navigate("Details")} />
+    <View
+      style={{
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "red",
+        flexDirection: "row",
+      }}
+    >
+      {/* <Button title="Details" onPress={() => navigation.navigate("Details")} /> */}
+      <View
+        style={{ backgroundColor: "yellow", width: "25%", height: 100 }}
+      ></View>
+      <View
+        style={{ backgroundColor: "pink", width: "25%", height: 100 }}
+      ></View>
+      <View
+        style={{ backgroundColor: "orange", width: "25%", height: 100 }}
+      ></View>
+      <View
+        style={{ backgroundColor: "purple", width: "25%", height: 100 }}
+      ></View>
     </View>
   );
 }
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Details</Text>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "blue",
+      }}
+    >
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Home - Main Screen Area</Text>
+      </View>
+
       <NavBar navigation={navigation} />
     </View>
   );
