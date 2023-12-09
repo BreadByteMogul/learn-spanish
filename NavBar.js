@@ -13,7 +13,6 @@ function NavBar({ navigation }) {
         flexDirection: "row",
       }}
     >
-      {/* <Button title="Details" onPress={() => navigation.navigate("Details")} /> */}
       <TouchableOpacity
         style={{
           backgroundColor: "yellow",
@@ -24,12 +23,12 @@ function NavBar({ navigation }) {
           justifyContent: "center",
         }}
         onPress={() => {
-          navigation.navigate("Home");
+          navigation.navigate("Cards");
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
         }}
       >
         <View style={{ marginBottom: 20 }}>
-          <Text>H</Text>
+          <Text>C</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -42,16 +41,16 @@ function NavBar({ navigation }) {
           justifyContent: "center",
         }}
         onPress={() => {
-          navigation.navigate("Details");
+          navigation.navigate("MyWords");
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
-          console.log("go details plz");
+          console.log("go MyWords plz");
         }}
       >
         <View style={{ marginBottom: 20 }}>
-          <Text>D</Text>
+          <Text>W</Text>
         </View>
       </TouchableOpacity>
-      <View
+      <TouchableOpacity
         style={{
           backgroundColor: "orange",
           width: "25%",
@@ -60,12 +59,17 @@ function NavBar({ navigation }) {
           alignItems: "center",
           justifyContent: "center",
         }}
+        onPress={() => {
+          navigation.navigate("Vocab");
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
+          console.log("go Vocab plz");
+        }}
       >
         <View style={{ marginBottom: 20 }}>
-          <Text>S</Text>
+          <Text>V</Text>
         </View>
-      </View>
-      <View
+      </TouchableOpacity>
+      <TouchableOpacity
         style={{
           backgroundColor: "purple",
           width: "25%",
@@ -74,25 +78,16 @@ function NavBar({ navigation }) {
           alignItems: "center",
           justifyContent: "center",
         }}
-      >
-        <View style={{ marginBottom: 20 }}>
-          <Text>S</Text>
-        </View>
-      </View>
-      <View
-        style={{
-          backgroundColor: "cyan",
-          width: "25%",
-          height: 80,
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
+        onPress={() => {
+          navigation.navigate("Stats");
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
+          console.log("go Stats plz");
         }}
       >
         <View style={{ marginBottom: 20 }}>
           <Text>S</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

@@ -12,13 +12,23 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ animation: "none" }}>
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+          name="Cards"
+          component={CardsScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Details"
-          component={DetailsScreen}
+          name="MyWords"
+          component={MyWordsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Vocab"
+          component={VocabScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Stats"
+          component={StatsScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
@@ -31,7 +41,7 @@ const handlePress = () => {
   // Other onPress actions
 };
 
-function HomeScreen({ navigation }) {
+function CardsScreen({ navigation }) {
   return (
     <View
       style={{
@@ -42,7 +52,7 @@ function HomeScreen({ navigation }) {
       }}
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home - Main Screen Area</Text>
+        <Text>Cards - Cards Screen Area</Text>
         <Button title="press me" onPress={() => console.log("tap tap")} />
       </View>
 
@@ -51,7 +61,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function DetailsScreen({ navigation }) {
+function MyWordsScreen({ navigation }) {
   return (
     <View
       style={{
@@ -62,7 +72,47 @@ function DetailsScreen({ navigation }) {
       }}
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Details - Details Screen Area</Text>
+        <Text>My Words - My Words Screen Area</Text>
+        <Button title="press me" onPress={() => console.log("tap")} />
+      </View>
+
+      <NavBar navigation={navigation} />
+    </View>
+  );
+}
+
+function VocabScreen({ navigation }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "blue",
+      }}
+    >
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Vocab - Vocab Screen Area</Text>
+        <Button title="press me" onPress={() => console.log("tap")} />
+      </View>
+
+      <NavBar navigation={navigation} />
+    </View>
+  );
+}
+
+function StatsScreen({ navigation }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "blue",
+      }}
+    >
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Stats - Stats Screen Area</Text>
         <Button title="press me" onPress={() => console.log("tap")} />
       </View>
 
