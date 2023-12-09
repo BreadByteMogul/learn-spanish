@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,18 +37,81 @@ function NavBar({ navigation }) {
       }}
     >
       {/* <Button title="Details" onPress={() => navigation.navigate("Details")} /> */}
+      <TouchableOpacity
+        style={{
+          backgroundColor: "yellow",
+          width: "25%",
+          height: 80,
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        onPress={() => navigation.navigate("Home")}
+      >
+        <View style={{ marginBottom: 20 }}>
+          <Text>H</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          backgroundColor: "pink",
+          width: "25%",
+          height: 80,
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        onPress={() => {
+          navigation.navigate("Details");
+          console.log("go details plz");
+        }}
+      >
+        <View style={{ marginBottom: 20 }}>
+          <Text>D</Text>
+        </View>
+      </TouchableOpacity>
       <View
-        style={{ backgroundColor: "yellow", width: "25%", height: 100 }}
-      ></View>
+        style={{
+          backgroundColor: "orange",
+          width: "25%",
+          height: 80,
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <View style={{ marginBottom: 20 }}>
+          <Text>S</Text>
+        </View>
+      </View>
       <View
-        style={{ backgroundColor: "pink", width: "25%", height: 100 }}
-      ></View>
+        style={{
+          backgroundColor: "purple",
+          width: "25%",
+          height: 80,
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <View style={{ marginBottom: 20 }}>
+          <Text>S</Text>
+        </View>
+      </View>
       <View
-        style={{ backgroundColor: "orange", width: "25%", height: 100 }}
-      ></View>
-      <View
-        style={{ backgroundColor: "purple", width: "25%", height: 100 }}
-      ></View>
+        style={{
+          backgroundColor: "cyan",
+          width: "25%",
+          height: 80,
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <View style={{ marginBottom: 20 }}>
+          <Text>S</Text>
+        </View>
+      </View>
     </View>
   );
 }
@@ -65,6 +128,7 @@ function HomeScreen({ navigation }) {
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Home - Main Screen Area</Text>
+        <Button title="press me" onPress={() => console.log("tap")} />
       </View>
 
       <NavBar navigation={navigation} />
