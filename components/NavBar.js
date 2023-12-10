@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, TouchableOpacity } from "react-native";
 import * as Haptics from "expo-haptics";
 import Feather from "react-native-vector-icons/Feather";
 

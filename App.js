@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import NavBar from "./components/NavBar";
+import Card from "./components/Card";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,8 +46,15 @@ function CardsScreen({ navigation }) {
         justifyContent: "center",
       }}
     >
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Cards - Cards Screen Area</Text>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <Card word={"construir"} />
       </View>
       <NavBar navigation={navigation} />
     </View>
