@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import * as Haptics from "expo-haptics";
 import Feather from "react-native-vector-icons/Feather";
@@ -43,7 +43,6 @@ function NavBar({ navigation }) {
         onPress={() => {
           navigation.navigate("MyWords");
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
-          console.log("go MyWords plz");
         }}
       >
         <View style={{ marginBottom: 20 }}>
@@ -62,7 +61,6 @@ function NavBar({ navigation }) {
         onPress={() => {
           navigation.navigate("Vocab");
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
-          console.log("go Vocab plz");
         }}
       >
         <View style={{ marginBottom: 20 }}>
@@ -81,7 +79,6 @@ function NavBar({ navigation }) {
         onPress={() => {
           navigation.navigate("Stats");
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
-          console.log("go Stats plz");
         }}
       >
         <View style={{ marginBottom: 20 }}>

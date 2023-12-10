@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
@@ -36,11 +36,6 @@ export default function App() {
   );
 }
 
-const handlePress = () => {
-  Haptic.trigger("impactMedium");
-  // Other onPress actions
-};
-
 function CardsScreen({ navigation }) {
   return (
     <View
@@ -53,7 +48,6 @@ function CardsScreen({ navigation }) {
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Cards - Cards Screen Area</Text>
       </View>
-
       <NavBar navigation={navigation} />
     </View>
   );
