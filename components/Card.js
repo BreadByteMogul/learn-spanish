@@ -34,13 +34,13 @@ function Card({ word }) {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
           }}
         >
-          {/* <Feather
+          <Feather
             name="volume-2"
             size={20}
             color="black"
             style={{ marginRight: 6 }}
           />
-          <Text style={{ fontSize: 22 }}>audio</Text> */}
+          <Text style={{ fontSize: 22 }}>audio</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
