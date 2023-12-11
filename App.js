@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Button, SafeAreaView } from "react-native";
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
 import TotalVocab from "./components/TotalVocab";
