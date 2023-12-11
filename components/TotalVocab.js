@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, SafeAreaView } from "react-native";
 
 function TotalVocab() {
   return (
-    <View
+    <SafeAreaView
       style={{
         backgroundColor: "blue",
         flex: 1,
@@ -13,7 +13,7 @@ function TotalVocab() {
       }}
     >
       <Text>Total Vocab</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
