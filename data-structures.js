@@ -1,4 +1,4 @@
-const myObj = {
+const wordData = {
   totalWords: [
     { word: "water", spanishWord: "agua", level: "A1", index: 0 },
     { word: "house", spanishWord: "casa", level: "A1", index: 1 },
@@ -45,3 +45,9 @@ const myObj = {
     },
   ],
 };
+
+// steps to build app
+// 1. Created "total vocab screen", populate it with the master word object
+// 2. Allow it to "save" words to local memory
+// 3. populate "my words" screen from local memory
+// 4. populate the Cards from local memory, allow it to update

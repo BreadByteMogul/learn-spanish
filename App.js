@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
+import TotalVocab from "./components/TotalVocab";
 
 const Stack = createNativeStackNavigator();
 
@@ -84,12 +85,20 @@ function VocabScreen({ navigation }) {
     <View
       style={{
         flex: 1,
+        width: "100%",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Vocab - Vocab Screen Area</Text>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <TotalVocab />
       </View>
 
       <NavBar navigation={navigation} />
