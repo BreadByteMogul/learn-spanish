@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import * as Haptics from "expo-haptics";
 import Feather from "react-native-vector-icons/Feather";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function TotalVocab() {
   return (
@@ -82,34 +83,54 @@ const VocabWord = ({ spanishWord, englishWord, onRemove }) => {
 };
 
 const MyVocabFlatList = () => {
-  const initialComponents = [
-    { spanishWord: "azucar", englishWord: "sugar", key: "1" },
-    { spanishWord: "pan", englishWord: "bread", key: "2" },
-    { spanishWord: "supermercado", englishWord: "supermarket", key: "3" },
-    { spanishWord: "manzana", englishWord: "apple", key: "4" },
-    { spanishWord: "famila", englishWord: "family", key: "5" },
-    { spanishWord: "camerara", englishWord: "waiter", key: "6" },
-    { spanishWord: "el", englishWord: "him", key: "7" },
-    { spanishWord: "me gusta", englishWord: "i like", key: "8" },
-    { spanishWord: "te encanta", englishWord: "you love", key: "9" },
-    { spanishWord: "gato", englishWord: "cat", key: "10" }, // Added an extra pair as an example
-    // ... add more items here as needed ...
-  ];
+  const [totalVocabulary, setTotalVocabulary] = useState([]);
 
-  const [words, setWords] = useState(initialComponents);
+  useEffect(() => {
+    console.log("useEffect triggered");
+    const loadVocabulary = async () => {
+      try {
+        const savedWords = await AsyncStorage.getItem("totalVocabulary");
+        if (savedWords !== null) {
+          setTotalVocabulary(JSON.parse(savedWords));
+          console.log("savedWords not null");
+          // Calculate the difference between masterList and savedWords to initialize totalVocabulary
+        } else {
+          setTotalVocabulary(masterList); // First app launch
+          console.log("savedWords is null");
+        }
+      } catch (error) {
+        // Error retrieving data
+      }
+    };
 
-  const handleRemoveWord = (spanishWord, englishWord) => {
-    setWords(
-      words.filter(
-        (word) =>
-          word.spanishWord !== spanishWord || word.englishWord !== englishWord
-      )
+    loadVocabulary();
+  }, []);
+
+  const handleRemoveWord = async (spanishWord, englishWord) => {
+    // Filter out the word from the totalVocabulary state
+    const updatedVocabulary = totalVocabulary.filter(
+      (word) =>
+        word.spanishWord !== spanishWord || word.englishWord !== englishWord
     );
+
+    // Update the state
+    setTotalVocabulary(updatedVocabulary);
+
+    try {
+      // Update the local storage
+      await AsyncStorage.setItem(
+        "totalVocabulary",
+        JSON.stringify(updatedVocabulary)
+      );
+    } catch (error) {
+      // Handle errors, e.g., log them or display an alert
+      console.error("Error updating local storage:", error);
+    }
   };
 
   return (
     <FlatList
-      data={words}
+      data={totalVocabulary}
       renderItem={({ item }) => (
         <VocabWord
           spanishWord={item.spanishWord}
@@ -122,6 +143,20 @@ const MyVocabFlatList = () => {
     />
   );
 };
+
+const masterList = [
+  { spanishWord: "azucar", englishWord: "sugar", key: "1" },
+  { spanishWord: "pan", englishWord: "bread", key: "2" },
+  { spanishWord: "supermercado", englishWord: "supermarket", key: "3" },
+  { spanishWord: "manzana", englishWord: "apple", key: "4" },
+  { spanishWord: "famila", englishWord: "family", key: "5" },
+  { spanishWord: "camerara", englishWord: "waiter", key: "6" },
+  { spanishWord: "el", englishWord: "him", key: "7" },
+  { spanishWord: "me gusta", englishWord: "i like", key: "8" },
+  { spanishWord: "te encanta", englishWord: "you love", key: "9" },
+  { spanishWord: "gato", englishWord: "cat", key: "10" }, // Added an extra pair as an example
+  // ... add more items here as needed ...
+];
 
 export default TotalVocab;
 
