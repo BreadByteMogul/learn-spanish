@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -28,7 +28,7 @@ function TotalVocab() {
   );
 }
 
-const VocabWord = ({ spanishWord, englishWord }) => {
+const VocabWord = ({ spanishWord, englishWord, onRemove }) => {
   return (
     <View
       style={{
@@ -72,6 +72,7 @@ const VocabWord = ({ spanishWord, englishWord }) => {
             `spanishWord: ${spanishWord} & the englishWord is: ${englishWord}`
           );
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
+          onRemove(spanishWord, englishWord);
         }}
       >
         <Feather name="plus" size={22} color="black" />
@@ -80,27 +81,50 @@ const VocabWord = ({ spanishWord, englishWord }) => {
   );
 };
 
-const components = [
-  <VocabWord spanishWord="azucar" englishWord="sugar" key="1" />,
-  <VocabWord spanishWord="pan" englishWord="bread" key="2" />,
-  <VocabWord spanishWord="supermercado" englishWord="supermarket" key="3" />,
-  <VocabWord spanishWord="manzana" englishWord="apple" key="4" />,
-  <VocabWord spanishWord="famila" englishWord="family" key="5" />,
-  <VocabWord spanishWord="camerara" englishWord="waiter" key="6" />,
-  <VocabWord spanishWord="el" englishWord="him" key="7" />,
-  <VocabWord spanishWord="me gusta" englishWord="i like" key="8" />,
-  <VocabWord spanishWord="te encanta" englishWord="you love" key="9" />,
-  // ... more components
-];
-
 const MyVocabFlatList = () => {
+  const initialComponents = [
+    { spanishWord: "azucar", englishWord: "sugar", key: "1" },
+    { spanishWord: "pan", englishWord: "bread", key: "2" },
+    { spanishWord: "supermercado", englishWord: "supermarket", key: "3" },
+    { spanishWord: "manzana", englishWord: "apple", key: "4" },
+    { spanishWord: "famila", englishWord: "family", key: "5" },
+    { spanishWord: "camerara", englishWord: "waiter", key: "6" },
+    { spanishWord: "el", englishWord: "him", key: "7" },
+    { spanishWord: "me gusta", englishWord: "i like", key: "8" },
+    { spanishWord: "te encanta", englishWord: "you love", key: "9" },
+    { spanishWord: "gato", englishWord: "cat", key: "10" }, // Added an extra pair as an example
+    // ... add more items here as needed ...
+  ];
+
+  const [words, setWords] = useState(initialComponents);
+
+  const handleRemoveWord = (spanishWord, englishWord) => {
+    setWords(
+      words.filter(
+        (word) =>
+          word.spanishWord !== spanishWord || word.englishWord !== englishWord
+      )
+    );
+  };
+
   return (
     <FlatList
-      data={components}
-      renderItem={({ item }) => item}
+      data={words}
+      renderItem={({ item }) => (
+        <VocabWord
+          spanishWord={item.spanishWord}
+          englishWord={item.englishWord}
+          key={item.key}
+          onRemove={handleRemoveWord}
+        />
+      )}
       keyExtractor={(item) => item.key}
     />
   );
 };
 
 export default TotalVocab;
+
+// 1. When you press "plus" it needs to save the word to local memory
+// 2. "It needs to delete the word from the list"
+// 3.
