@@ -87,7 +87,6 @@ function Card({ word }) {
             height: 60,
             alignItems: "center",
             justifyContent: "center",
-
             flexDirection: "row",
           }}
           onPress={() => {
