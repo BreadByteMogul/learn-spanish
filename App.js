@@ -6,6 +6,7 @@ import { StyleSheet, Text, View, Button, SafeAreaView } from "react-native";
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
 import TotalVocab from "./components/TotalVocab";
+import MyWords from "./components/MyWords";
 
 const Stack = createNativeStackNavigator();
 
@@ -72,7 +73,7 @@ function MyWordsScreen({ navigation }) {
       }}
     >
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>My Words - My Words Screen Area</Text>
+        <MyWords />
       </View>
 
       <NavBar navigation={navigation} />
