@@ -10,6 +10,7 @@ import * as Haptics from "expo-haptics";
 import Feather from "react-native-vector-icons/Feather";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// Creates the view container (device safe) and a title
 function TotalVocab() {
   return (
     <SafeAreaView
@@ -29,6 +30,7 @@ function TotalVocab() {
   );
 }
 
+// This is the basic N of 1 "Vocab Word" componenet, takes in data
 const VocabWord = ({ spanishWord, englishWord, onRemove }) => {
   return (
     <View
@@ -82,17 +84,17 @@ const VocabWord = ({ spanishWord, englishWord, onRemove }) => {
   );
 };
 
+//Creates a list of VocabWord components, handles read/write local storage
 const MyVocabFlatList = () => {
   const [totalVocabulary, setTotalVocabulary] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect triggered");
     const loadVocabulary = async () => {
       try {
         const savedWords = await AsyncStorage.getItem("totalVocabulary");
         if (savedWords !== null) {
           setTotalVocabulary(JSON.parse(savedWords));
-          console.log("savedWords not null");
+          console.log(`savedWords is not null`);
           // Calculate the difference between masterList and savedWords to initialize totalVocabulary
         } else {
           setTotalVocabulary(masterList); // First app launch
@@ -144,6 +146,7 @@ const MyVocabFlatList = () => {
   );
 };
 
+//Master list of spanish words
 const masterList = [
   { spanishWord: "azucar", englishWord: "sugar", key: "1" },
   { spanishWord: "pan", englishWord: "bread", key: "2" },
