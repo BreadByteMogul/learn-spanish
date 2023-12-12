@@ -2,6 +2,8 @@ import React from "react";
 import { Text, View, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// Current state stores TOTAL vocabulary ... we need to push a MY vocabulary key to create new words
+
 function MyWords() {
   const fetchData = async () => {
     try {

@@ -150,26 +150,76 @@ const MyVocabFlatList = () => {
 
 //Master list of spanish words
 const masterList = [
-  { knownCount: 0, spanishWord: "azucar", englishWord: "sugar", key: "1" },
-  { knownCount: 0, spanishWord: "pan", englishWord: "bread", key: "2" },
   {
     knownCount: 0,
+    forgotCount: 0,
+    spanishWord: "azucar",
+    englishWord: "sugar",
+    key: "1",
+  },
+  {
+    knownCount: 0,
+    forgotCount: 0,
+    spanishWord: "pan",
+    englishWord: "bread",
+    key: "2",
+  },
+  {
+    knownCount: 0,
+    forgotCount: 0,
     spanishWord: "supermercado",
     englishWord: "supermarket",
     key: "3",
   },
-  { knownCount: 0, spanishWord: "manzana", englishWord: "apple", key: "4" },
-  { knownCount: 0, spanishWord: "famila", englishWord: "family", key: "5" },
-  { knownCount: 0, spanishWord: "camerara", englishWord: "waiter", key: "6" },
-  { knownCount: 0, spanishWord: "el", englishWord: "him", key: "7" },
-  { knownCount: 0, spanishWord: "me gusta", englishWord: "i like", key: "8" },
   {
     knownCount: 0,
+    forgotCount: 0,
+    spanishWord: "manzana",
+    englishWord: "apple",
+    key: "4",
+  },
+  {
+    knownCount: 0,
+    forgotCount: 0,
+    spanishWord: "famila",
+    englishWord: "family",
+    key: "5",
+  },
+  {
+    knownCount: 0,
+    forgotCount: 0,
+    spanishWord: "camerara",
+    englishWord: "waiter",
+    key: "6",
+  },
+  {
+    knownCount: 0,
+    forgotCount: 0,
+    spanishWord: "el",
+    englishWord: "him",
+    key: "7",
+  },
+  {
+    knownCount: 0,
+    forgotCount: 0,
+    spanishWord: "me gusta",
+    englishWord: "i like",
+    key: "8",
+  },
+  {
+    knownCount: 0,
+    forgotCount: 0,
     spanishWord: "te encanta",
     englishWord: "you love",
     key: "9",
   },
-  { knownCount: 0, spanishWord: "gato", englishWord: "cat", key: "10" },
+  {
+    knownCount: 0,
+    forgotCount: 0,
+    spanishWord: "gato",
+    englishWord: "cat",
+    key: "10",
+  },
   // ... add more items here as needed ...
 ];
 
