@@ -16,10 +16,21 @@ function MyWords() {
     }
   };
 
+  const deleteData = async () => {
+    try {
+      await AsyncStorage.removeItem("totalVocabulary");
+      console.log("data deleted");
+    } catch (error) {
+      console.log(error);
+      Alert.alert("error");
+    }
+  };
+
   return (
     <View>
       <Text>My Word Screen</Text>
-      <Button title="press me" onPress={fetchData} />
+      <Button title="console log data" onPress={fetchData} />
+      <Button title="delete data" onPress={deleteData} />
     </View>
   );
 }
