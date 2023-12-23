@@ -17,22 +17,22 @@ export default function App() {
         <Stack.Screen
           name="Cards"
           component={CardsScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, onmountOnBlur: true }}
         />
         <Stack.Screen
           name="MyWords"
           component={MyWordsScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, onmountOnBlur: true }}
         />
         <Stack.Screen
           name="Vocab"
           component={VocabScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, onmountOnBlur: true }}
         />
         <Stack.Screen
           name="Stats"
           component={StatsScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, onmountOnBlur: true }}
         />
       </Stack.Navigator>
     </NavigationContainer>
