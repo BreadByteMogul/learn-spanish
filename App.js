@@ -70,9 +70,17 @@ function MyWordsScreen({ navigation }) {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
+        width: "100%",
       }}
     >
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
         <MyWords />
       </View>
 

@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { Text, View, Button } from "react-native";
+import {
+  Text,
+  View,
+  Button,
+  SafeAreaView,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Feather from "react-native-vector-icons/Feather";
+import * as Haptics from "expo-haptics";
 
 // Current state stores TOTAL vocabulary ... we need to push a MY vocabulary key to create new words
 
@@ -52,24 +61,91 @@ function MyWords() {
   };
 
   return (
-    <View>
-      <Text>My Word Screen</Text>
-      <Button
-        title="console log data"
-        onPress={() => {
-          fetchTotalVocabData();
-          fetchMyVocabData();
-        }}
-      />
-      <Button
-        title="delete data"
-        onPress={() => {
-          deleteTotalVocabData();
-          // deleteMyVocabData();
-        }}
-      />
-    </View>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        width: "100%",
+        alignItems: "center",
+      }}
+    >
+      <View style={{ marginTop: 20, marginBottom: 10 }}>
+        <Text style={{ fontSize: 34, fontWeight: "bold" }}>Your Words</Text>
+      </View>
+
+      <MyWordItem />
+      <MyWordItem />
+      <MyWordItem />
+
+      {/* <View>
+        <Button
+          title="console log data"
+          onPress={() => {
+            fetchTotalVocabData();
+            fetchMyVocabData();
+          }}
+        />
+        <Button
+          title="delete data"
+          onPress={() => {
+            deleteTotalVocabData();
+            // deleteMyVocabData();
+          }}
+        />
+      </View> */}
+    </SafeAreaView>
   );
 }
+
+const MyWordItem = ({ spanishWord, englishWord, onRemove }) => {
+  return (
+    <View
+      style={{
+        backgroundColor: "#f8f8f8",
+        borderTopColor: "#d2d2d2",
+        borderTopWidth: 1,
+        borderBottomColor: "#d2d2d2",
+        borderBottomWidth: 1,
+        width: "100%",
+        marginTop: 20,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        height: 100,
+      }}
+    >
+      <View style={{ padding: 20 }}>
+        <Text style={{ fontSize: 20 }}>manzana</Text>
+        <Text
+          style={{
+            fontSize: 14,
+            fontWeight: 300,
+            marginTop: 5,
+            fontStyle: "italic",
+          }}
+        >
+          apple
+        </Text>
+        <Text style={{ fontSize: 14, fontWeight: 300, marginTop: 5 }}>
+          know it count: 0
+        </Text>
+      </View>
+
+      <TouchableOpacity
+        style={{
+          padding: 20,
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+        }}
+        onPress={() => {
+          console.log("delete me");
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
+        }}
+      >
+        <Feather name="trash" size={22} color="black" />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 export default MyWords;
