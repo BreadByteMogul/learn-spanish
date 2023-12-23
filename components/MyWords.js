@@ -5,13 +5,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // Current state stores TOTAL vocabulary ... we need to push a MY vocabulary key to create new words
 
 function MyWords() {
-  const [refreshKey, setRefreshKey] = useState(0);
-
-  // Call this function to force a re-render
-  const forceUpdate = () => {
-    setRefreshKey((oldKey) => oldKey + 1);
-  };
-
   const fetchData = async () => {
     try {
       const data = await AsyncStorage.getItem("totalVocabulary");
@@ -43,7 +36,6 @@ function MyWords() {
         title="delete data"
         onPress={() => {
           deleteData();
-          forceUpdate();
         }}
       />
     </View>
