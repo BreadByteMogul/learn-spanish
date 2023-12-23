@@ -110,6 +110,32 @@ const MyVocabFlatList = () => {
   }, []);
 
   const handleRemoveWord = async (spanishWord, englishWord) => {
+    // Find the item that is being removed
+    const removedItem = totalVocabulary.find(
+      (item) =>
+        item.spanishWord === spanishWord && item.englishWord === englishWord
+    );
+
+    // Get the current myVocabulary from local storage
+    const myVocabularyString = await AsyncStorage.getItem("myVocabulary");
+    const myVocabulary = myVocabularyString
+      ? JSON.parse(myVocabularyString)
+      : [];
+
+    // Check if the removed item is already in myVocabulary
+    const isItemInMyVocabulary = myVocabulary.some(
+      (item) =>
+        item.spanishWord === removedItem.spanishWord &&
+        item.englishWord === removedItem.englishWord
+    );
+
+    // If the removed item is not in myVocabulary, add it
+    if (!isItemInMyVocabulary) {
+      myVocabulary.push(removedItem);
+      // Save myVocabulary back to local storage
+      await AsyncStorage.setItem("myVocabulary", JSON.stringify(myVocabulary));
+    }
+
     // Filter out the word from the totalVocabulary state
     const updatedVocabulary = totalVocabulary.filter(
       (word) =>
