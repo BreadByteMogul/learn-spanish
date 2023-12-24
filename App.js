@@ -45,6 +45,17 @@ export default function App() {
 }
 
 function CardsScreen({ navigation }) {
+  const isFocused = useIsFocused();
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    if (isFocused) {
+      // Code to run when the screen is focused
+      console.log("focused");
+      setRefresh(!refresh);
+    }
+  }, [isFocused]);
+
   return (
     <View
       style={{
@@ -61,7 +72,7 @@ function CardsScreen({ navigation }) {
           width: "100%",
         }}
       >
-        <Card word={"construir"} />
+        <Card refresh={refresh} setRefresh={setRefresh} />
       </View>
       <NavBar navigation={navigation} />
     </View>

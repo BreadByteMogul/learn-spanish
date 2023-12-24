@@ -86,7 +86,7 @@ function MyWords({ refresh }) {
           title="delete data"
           onPress={() => {
             deleteTotalVocabData();
-            // deleteMyVocabData();
+            deleteMyVocabData();
           }}
         />
       </View>
