@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
+import { NavigationContainer, useIsFocused } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, SafeAreaView } from "react-native";
@@ -13,7 +13,9 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ animation: "none" }}>
+      <Stack.Navigator
+        screenOptions={{ animation: "none", onmountOnBlur: true }}
+      >
         <Stack.Screen
           name="Cards"
           component={CardsScreen}
@@ -22,7 +24,10 @@ export default function App() {
         <Stack.Screen
           name="MyWords"
           component={MyWordsScreen}
-          options={{ headerShown: false, onmountOnBlur: true }}
+          options={{
+            headerShown: false,
+            onmountOnBlur: true,
+          }}
         />
         <Stack.Screen
           name="Vocab"
@@ -64,6 +69,17 @@ function CardsScreen({ navigation }) {
 }
 
 function MyWordsScreen({ navigation }) {
+  const isFocused = useIsFocused();
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    if (isFocused) {
+      // Code to run when the screen is focused
+      console.log("focused");
+      setRefresh(!refresh);
+    }
+  }, [isFocused]);
+
   return (
     <View
       style={{
@@ -81,7 +97,7 @@ function MyWordsScreen({ navigation }) {
           width: "100%",
         }}
       >
-        <MyWords />
+        <MyWords refresh={refresh} />
       </View>
 
       <NavBar navigation={navigation} />

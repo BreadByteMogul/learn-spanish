@@ -13,7 +13,7 @@ import * as Haptics from "expo-haptics";
 
 // Current state stores TOTAL vocabulary ... we need to push a MY vocabulary key to create new words
 
-function MyWords() {
+function MyWords({ refresh }) {
   const fetchTotalVocabData = async () => {
     try {
       const data = await AsyncStorage.getItem("totalVocabulary");
@@ -72,7 +72,7 @@ function MyWords() {
         <Text style={{ fontSize: 34, fontWeight: "bold" }}>Your Words</Text>
       </View>
 
-      <MyWordFlatList />
+      <MyWordFlatList refresh={refresh} />
 
       <View>
         <Button
@@ -94,7 +94,7 @@ function MyWords() {
   );
 }
 
-const MyWordFlatList = () => {
+const MyWordFlatList = ({ refresh }) => {
   const [myWordData, setMyWordData] = useState([]);
 
   const MyWordItem = ({ spanishWord, englishWord, knownCount }) => {
@@ -205,7 +205,7 @@ const MyWordFlatList = () => {
     };
 
     loadMyWords();
-  }, []);
+  }, [refresh]);
 
   return (
     <View style={{ flex: 1, width: "100%" }}>
