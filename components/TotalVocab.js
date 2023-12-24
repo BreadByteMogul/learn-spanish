@@ -96,6 +96,7 @@ const MyVocabFlatList = () => {
         if (savedWords !== null) {
           setTotalVocabulary(JSON.parse(savedWords));
           console.log(`savedWords is not null`);
+          console.log("savedWords is:", savedWords);
           // Calculate the difference between masterList and savedWords to initialize totalVocabulary
         } else {
           setTotalVocabulary(masterList); // First app launch
