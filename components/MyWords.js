@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -72,9 +72,7 @@ function MyWords() {
         <Text style={{ fontSize: 34, fontWeight: "bold" }}>Your Words</Text>
       </View>
 
-      <MyWordItem />
-      <MyWordItem />
-      <MyWordItem />
+      <MyWordFlatList />
 
       {/* <View>
         <Button
@@ -114,7 +112,7 @@ const MyWordItem = ({ spanishWord, englishWord, onRemove }) => {
       }}
     >
       <View style={{ padding: 20 }}>
-        <Text style={{ fontSize: 20 }}>manzana</Text>
+        <Text style={{ fontSize: 20 }}>{spanishWord}</Text>
         <Text
           style={{
             fontSize: 14,
@@ -123,7 +121,7 @@ const MyWordItem = ({ spanishWord, englishWord, onRemove }) => {
             fontStyle: "italic",
           }}
         >
-          apple
+          {englishWord}
         </Text>
         <Text style={{ fontSize: 14, fontWeight: 300, marginTop: 5 }}>
           know it count: 0
@@ -144,6 +142,46 @@ const MyWordItem = ({ spanishWord, englishWord, onRemove }) => {
       >
         <Feather name="trash" size={22} color="black" />
       </TouchableOpacity>
+    </View>
+  );
+};
+
+const MyWordFlatList = () => {
+  const [myWordData, setMyWordData] = useState([]);
+
+  useEffect(() => {
+    const loadMyWords = async () => {
+      try {
+        const asyncMyWordData = await AsyncStorage.getItem("myVocabulary");
+        if (myWordData !== null) {
+          setMyWordData(JSON.parse(asyncMyWordData));
+          console.log(
+            "MyVocabData from AsyncStorage:",
+            JSON.parse(asyncMyWordData)
+          );
+        } else {
+          console.log("No data found in AsyncStorage for key: myVocabulary");
+        }
+      } catch (error) {
+        console.error("Error reading from AsyncStorage:", error);
+      }
+    };
+
+    loadMyWords();
+  }, []);
+
+  return (
+    <View style={{ flex: 1, width: "100%" }}>
+      <FlatList
+        data={myWordData}
+        renderItem={({ item }) => (
+          <MyWordItem
+            spanishWord={item.spanishWord}
+            englishWord={item.englishWord}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 };
