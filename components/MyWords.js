@@ -97,7 +97,7 @@ function MyWords({ refresh }) {
 const MyWordFlatList = ({ refresh }) => {
   const [myWordData, setMyWordData] = useState([]);
 
-  const MyWordItem = ({ spanishWord, englishWord, knownCount }) => {
+  const MyWordItem = ({ spanishWord, englishWord, knownCount, forgotCount }) => {
     return (
       <View
         style={{
@@ -131,7 +131,7 @@ const MyWordFlatList = ({ refresh }) => {
             know it count: {knownCount}
           </Text>
           <Text style={{ fontSize: 14, fontWeight: 300, marginTop: 5 }}>
-            forgot it count: 0
+            forgot it count: {forgotCount}
           </Text>
         </View>
 
@@ -220,6 +220,7 @@ const MyWordFlatList = ({ refresh }) => {
             spanishWord={item.spanishWord}
             englishWord={item.englishWord}
             knownCount={item.knownCount}
+            forgotCount={item.forgotCount}
           />
         )}
         keyExtractor={(item) => item.key}
