@@ -74,6 +74,40 @@ function Card({ refresh, setRefresh }) {
     setWordState(sortedData);
   };
 
+
+  // handles forgot count
+
+  const increaseForgotCount = async (spanishWord, englishWord) => {
+    // Get the current data from local storage
+    const dataString = await AsyncStorage.getItem("myVocabulary");
+    const data = dataString ? JSON.parse(dataString) : [];
+
+    console.log("data at index 0:", data[0]);
+
+    // Find the item and increase its knownCount
+    const updatedData = data.map((item) => {
+      if (
+        item.spanishWord === spanishWord &&
+        item.englishWord === englishWord
+      ) {
+        return { ...item, forgotCount: (item.forgotCount || 0) + 1 };
+      } else {
+        return item;
+      }
+    });
+
+    // it's looking at the wrong key ERROR ERROR
+    console.log("name of 0th index: ", updatedData[0].englishWord);
+
+    const sortedData = wordArrayHandler(updatedData, updatedData[0].key);
+    console.log("increaseknowncount priority: ", sortedData[0].priority);
+
+    // Save the updated data back to local storage
+    await AsyncStorage.setItem("myVocabulary", JSON.stringify(sortedData));
+
+    setWordState(sortedData);
+  };
+
   return (
     <View
       style={{
@@ -164,6 +198,10 @@ function Card({ refresh, setRefresh }) {
           }}
           onPress={() => {
             console.log("forgot");
+            increaseForgotCount(
+              wordState[0].spanishWord,
+              wordState[0].englishWord
+            );
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.light);
           }}
         >
