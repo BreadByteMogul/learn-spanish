@@ -108,13 +108,14 @@ const MyWordFlatList = ({ refresh }) => {
           borderBottomWidth: 1,
           width: "100%",
           marginTop: 20,
+          
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          height: 100,
+          height: 120,
         }}
       >
-        <View style={{ padding: 20 }}>
+        <View style={{ padding: 20}}>
           <Text style={{ fontSize: 20 }}>{spanishWord}</Text>
           <Text
             style={{
@@ -128,6 +129,9 @@ const MyWordFlatList = ({ refresh }) => {
           </Text>
           <Text style={{ fontSize: 14, fontWeight: 300, marginTop: 5 }}>
             know it count: {knownCount}
+          </Text>
+          <Text style={{ fontSize: 14, fontWeight: 300, marginTop: 5 }}>
+            forgot it count: 0
           </Text>
         </View>
 

@@ -86,10 +86,19 @@ const VocabWord = ({ spanishWord, englishWord, onRemove }) => {
 
 //Creates a list of VocabWord components, handles read/write local storage
 const MyVocabFlatList = () => {
-  const [totalVocabulary, setTotalVocabulary] = useState([]);
+  const [totalVocabulary, setTotalVocabulary] = useState([
+    {
+      knownCount: 0,
+      forgotCount: 0,
+      spanishWord: "azucar",
+      englishWord: "sugar",
+      key: 1,
+    },
+  ]);
 
   useEffect(() => {
     console.log("trigger useEffect");
+    console.log("state is: ", totalVocabulary);
     const loadVocabulary = async () => {
       try {
         const savedWords = await AsyncStorage.getItem("totalVocabulary");

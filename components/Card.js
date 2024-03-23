@@ -48,6 +48,8 @@ function Card({ refresh, setRefresh }) {
     const dataString = await AsyncStorage.getItem("myVocabulary");
     const data = dataString ? JSON.parse(dataString) : [];
 
+    console.log("data at index 0:", data[0]);
+
     // Find the item and increase its knownCount
     const updatedData = data.map((item) => {
       if (
