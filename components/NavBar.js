@@ -67,7 +67,7 @@ function NavBar({ navigation }) {
           <Feather name="book" size={22} color="#444" />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={{
           backgroundColor: "#f8f8f8",
           width: "25%",
@@ -84,7 +84,7 @@ function NavBar({ navigation }) {
         <View style={{ marginBottom: 20 }}>
           <Feather name="bar-chart" size={22} color="#444" />
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
