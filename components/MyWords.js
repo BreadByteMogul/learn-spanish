@@ -89,7 +89,34 @@ function MyWords({ refresh }) {
             deleteMyVocabData();
           }}
         />
+        <Button
+          title="create object"
+          onPress={() => {
+
+            function parseWordPairsList(wordPairsString) {
+              // Split the string into an array of word pairs based on newlines
+              const pairs = wordPairsString.split("\n");
+              // Map each pair to an object with the specified structure
+              return pairs.map((pair, index) => {
+                  // Remove the "- " prefix and split each pair into English and Spanish words
+                  const [spanishWord, englishWord] = pair.replace("- ", "").split(" — ");
+                  // Return the formatted object
+                  return {
+                      knownCount: 0,
+                      forgotCount: 0,
+                      spanishWord: spanishWord.trim(),
+                      englishWord: englishWord.trim(),
+                      key: index.toString()
+                  };
+              });
+          }
+          
+            
+          }}
+        />
+        
       </View>
+      
     </SafeAreaView>
   );
 }
@@ -229,4 +256,6 @@ const MyWordFlatList = ({ refresh }) => {
   );
 };
 
+
 export default MyWords;
+
